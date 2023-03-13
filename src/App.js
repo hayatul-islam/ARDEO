@@ -1,16 +1,21 @@
 import React from "react";
-import AllUsers from "./components/AllUsers";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Users from "./components/Users";
 
 function App() {
   return (
     <div>
-      <Header />
-      <AllUsers />
-      <Home />
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

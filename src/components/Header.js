@@ -18,6 +18,7 @@ const Header = () => {
           Users
         </Link>
         <button
+          onClick={() => navigate("/login")}
           className="px-3 py-1.5 border rounded-xl border-[#692438] text-[#692438]"
           type="button"
         >

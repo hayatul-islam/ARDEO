@@ -2,10 +2,10 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className="px-8 md:px-[150px]">
-      <div className="px-8 flex justify-around items-center pt-12 pb-[100px] bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dGVhbSUyMGNvdmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60')] bg-no-repeat bg-cover">
-        <div className="text-[30px] text-white space-y-4">
-          <h2 className="flex items-center bg-[#bb202e] w-[305px]">
+    <div className="px-6 md:px-12">
+      <div className="px-8 md:flex md:justify-around items-center pt-12 pb-[100px] bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dGVhbSUyMGNvdmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60')] bg-no-repeat bg-cover space-y-6 md:space-y-0">
+        <div className="text-[20px] sm:text-[30px] text-white space-y-4">
+          <h2 className="flex items-center bg-[#bb202e] sm:w-[305px]">
             <span className="bg-[#692238] px-2 py-1">Pursue</span>
             <span
               style={{
@@ -32,7 +32,7 @@ const HeroSection = () => {
             <span className="pl-2 pr-4">your peace of mind</span>{" "}
           </h2>
         </div>
-        <div className="bg-white px-6 max-w-[300px]">
+        <div className="bg-white px-6 md:w-[350px]">
           <div className="text-center">
             <img
               className="w-[200px] mx-auto"

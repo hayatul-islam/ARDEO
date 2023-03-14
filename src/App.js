@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import UserDetails from "./components/UserDetails";
@@ -16,7 +15,7 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/users/:id" element={<UserDetails />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );

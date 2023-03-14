@@ -3,11 +3,14 @@ import { BsShield } from "react-icons/bs";
 
 const About = () => {
   return (
-    <div className="w-[700px] mx-auto pb-6 -mt-12">
+    <div className="lg:w-[700px] mx-auto px-6 lg:px-0 pb-6 -mt-12">
       <div>
-        <div className="flex items-center gap-x-6 px-4 bg-[#692438] text-white">
+        <div className="flex items-center gap-x-6 px-4 py-2 bg-[#692438] text-white">
           <div className="p-3">
-            <BsShield size={60} color="white" />
+            <BsShield
+              className="w-[40px] h-[40px] md:w-[60px] md:h-[60px]"
+              color="white"
+            />
           </div>
           <p>
             Farm-to-table selfies lyft portland keffiyeh next level. Mumblecore
@@ -16,10 +19,8 @@ const About = () => {
           </p>
         </div>
         <div className="flex items-center gap-x-6 px-2 text-[#692438] border border-[#692438]">
-          <h2 className="p-3 text-[24px] font-bold border-r border-[#692438]">
-            $46000
-          </h2>
-          <p>
+          <h2 className="text-[20px] md:text-[24px] font-bold py-2">$46000</h2>
+          <p className="border-l border-[#692438] p-2">
             Put a bird on it slow-carb scenester man bun. Asymmetrical jean
             shorts bodega boys single-origin coffee kickstarter shoreditch.
           </p>
@@ -36,7 +37,7 @@ const About = () => {
         </div>
         <div>
           <h2 className="text-[24px] text-[#692438] font-bold">
-            Put a bird on it{" "}
+            Put a bird on it
           </h2>
           <p className="font-bold">
             Farm-to-table selfies lyft portland keffiyeh next level. Mumblecore

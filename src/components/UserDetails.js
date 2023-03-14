@@ -15,7 +15,7 @@ const UserDetails = () => {
     dispatch(fetchUser(id));
   }, [dispatch, id]);
   return (
-    <div className="max-w-[800px] mx-auto py-6">
+    <div className="max-w-[800px] mx-auto py-6 px-6">
       <div className="flex justify-end">
         <button onClick={() => navigate("/users")}>
           <TbArrowBackUp size={30} color="#9a9090" />
@@ -23,16 +23,18 @@ const UserDetails = () => {
       </div>
       <div className="flex items-center gap-x-6 border-b pb-8">
         <img
-          className="w-[100px] h-[100px] rounded-full"
+          className="w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-full"
           src="https://thumbs.dreamstime.com/b/user-icon-trendy-flat-style-isolated-grey-background-user-symbol-user-icon-trendy-flat-style-isolated-grey-background-123663211.jpg"
           alt=""
         />
         <div>
-          <h2 className="text-[30px] font-medium uppercase">{name}</h2>
-          <p className="text-[20px]">{company?.catchPhrase}</p>
+          <h2 className="text-[22px] md:text-[30px] font-medium uppercase">
+            {name}
+          </h2>
+          <p className="text-[16px] md:text-[20px]">{company?.catchPhrase}</p>
         </div>
       </div>
-      <div className="py-6 flex justify-between">
+      <div className="py-6 space-y-6 md:space-y-0 md:flex justify-between">
         <div>
           <h2 className="text-[24px] font-medium uppercase">Address</h2>
           <address>
@@ -50,7 +52,7 @@ const UserDetails = () => {
             </p>
           </address>
         </div>
-        <div className="shadow-xl px-8 py-6 w-[350px] rounded space-y-2">
+        <div className="shadow-xl px-8 py-6 w-[350px] ml-auto rounded space-y-2">
           <div>
             <h2 className="font-medium text-[20px]">Phone:</h2>
             <p>{phone}</p>

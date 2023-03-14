@@ -13,7 +13,7 @@ const Users = () => {
   }, [dispatch]);
 
   return (
-    <div className="grid grid-cols-3 gap-12 py-12 mx-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 py-12 mx-12">
       {users?.map((user) => (
         <div key={user?.id} className="border px-6 shadow-lg rounded">
           <div className="flex justify-end space-x-1 items-center pt-2">

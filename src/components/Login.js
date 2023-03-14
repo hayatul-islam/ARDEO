@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { logIn } from "../features/users/loginSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user } = useSelector((state) => state.loginUser);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
-    if (user?.email === email && user?.password === password) {
-      localStorage.setItem("loginUser", true);
+    if (user) {
+      //   localStorage.setItem("loginUser", true);
+      dispatch(logIn({ email, password }));
       navigate("/users");
     } else {
       alert("Email or password wrong");

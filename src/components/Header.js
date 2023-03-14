@@ -1,17 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../features/users/loginSlice";
 
 const Header = () => {
-  const { loginUser } = useSelector((state) => state.loginUser);
+  const { loginUser, isLogin } = useSelector((state) => state.loginUser);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
-    if (loginUser === "false") {
+    if (loginUser === "false" || !isLogin) {
       navigate("/login");
     }
-    if (loginUser === "true") {
-      localStorage.setItem("loginUser", false);
+    if (loginUser === "true" || isLogin) {
+      dispatch(logOut());
     }
   };
   return (
@@ -33,7 +35,7 @@ const Header = () => {
           className="px-3 py-1.5 border rounded-xl border-[#692438] text-[#692438]"
           type="button"
         >
-          {loginUser === "true" ? "Logout" : "Login"}
+          {loginUser === "true" || isLogin ? "Logout" : "Login"}
         </button>
       </nav>
     </div>

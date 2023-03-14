@@ -1,7 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const user = { name, email, password };
+  const userString = JSON.stringify(user);
+
+  const handleRegister = () => {
+    if (name !== "" && email !== "" && password !== "") {
+      localStorage.setItem("user", userString);
+      navigate("/login");
+    }
+  };
   return (
     <div class="w-full max-w-xs mx-auto py-12">
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -16,7 +30,9 @@ const Register = () => {
           <input
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
+            onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
+            required
           />
         </div>
         <div class="mb-4">
@@ -26,7 +42,9 @@ const Register = () => {
           <input
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="email"
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
+            required
           />
         </div>
         <div class="mb-6">
@@ -40,13 +58,16 @@ const Register = () => {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
+            required
           />
         </div>
         <div class="flex items-center justify-between">
           <button
+            onClick={handleRegister}
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
+            type="submit"
           >
             Register
           </button>

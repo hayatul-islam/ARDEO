@@ -1,7 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { user } = useSelector((state) => state.loginUser);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (user?.email === email && user?.password === password) {
+      localStorage.setItem("loginUser", true);
+      navigate("/users");
+    } else {
+      alert("Email or password wrong");
+    }
+  };
   return (
     <div class="w-full max-w-xs mx-auto py-12">
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -16,7 +30,9 @@ const Login = () => {
           <input
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="email"
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
+            required
           />
         </div>
         <div class="mb-6">
@@ -30,13 +46,16 @@ const Login = () => {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
+            required
           />
         </div>
         <div class="flex items-center justify-between">
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
+            type="submit"
+            onClick={handleLogin}
           >
             Login
           </button>

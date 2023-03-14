@@ -1,8 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const { loginUser } = useSelector((state) => state.loginUser);
   const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (loginUser === "false") {
+      navigate("/login");
+    }
+    if (loginUser === "true") {
+      localStorage.setItem("loginUser", false);
+    }
+  };
   return (
     <div className="py-4 flex justify-between items-center px-6 md:px-12">
       <div>
@@ -18,11 +29,11 @@ const Header = () => {
           Users
         </Link>
         <button
-          onClick={() => navigate("/login")}
+          onClick={handleLogin}
           className="px-3 py-1.5 border rounded-xl border-[#692438] text-[#692438]"
           type="button"
         >
-          Login
+          {loginUser === "true" ? "Logout" : "Login"}
         </button>
       </nav>
     </div>

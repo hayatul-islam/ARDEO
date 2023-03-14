@@ -2,9 +2,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-[#f2f2f2] mx-12 py-8">
+    <div className="bg-[#f2f2f2] md:mx-12 py-8">
       <h2 className="text-center text-[28px]">As Featured In</h2>
-      <div className="grid grid-cols-5 text-center items-center py-4">
+      <div className="grid grid-cols-2 md:grid-cols-5 text-center items-center py-4">
         <img
           className="h-[40px] mx-auto"
           src="https://i.ibb.co/gJBZVSS/us.png"

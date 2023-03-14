@@ -1,17 +1,15 @@
+import { Popover } from "@headlessui/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../features/users/loginSlice";
 
 const Header = () => {
-  const { loginUser, isLogin } = useSelector((state) => state.loginUser);
+  const { user, loginUser, isLogin } = useSelector((state) => state.loginUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLogin = () => {
-    if (loginUser === "false" || !isLogin) {
-      navigate("/login");
-    }
+  const handleLogOut = () => {
     if (loginUser === "true" || isLogin) {
       dispatch(logOut());
     }
@@ -30,13 +28,33 @@ const Header = () => {
         <Link className="text-[20px]" to="/users">
           Users
         </Link>
-        <button
-          onClick={handleLogin}
-          className="px-3 py-1.5 border rounded-xl border-[#692438] text-[#692438]"
-          type="button"
-        >
-          {loginUser === "true" || isLogin ? "Logout" : "Login"}
-        </button>
+
+        {(loginUser === "false" || !isLogin) && (
+          <button
+            onClick={() => navigate("/login")}
+            className="px-3 py-1.5 border rounded-xl border-[#692438] text-[#692438]"
+            type="button"
+          >
+            Login
+          </button>
+        )}
+        {(loginUser === "true" || isLogin) && (
+          <Popover className="relative">
+            <Popover.Button>{user?.name}</Popover.Button>
+
+            <Popover.Panel className="absolute z-10">
+              <div className="px-6">
+                <button
+                  onClick={handleLogOut}
+                  className="px-3 py-1.5 border rounded-xl border-[#692438] text-[#692438]"
+                  type="button"
+                >
+                  Logout
+                </button>
+              </div>
+            </Popover.Panel>
+          </Popover>
+        )}
       </nav>
     </div>
   );

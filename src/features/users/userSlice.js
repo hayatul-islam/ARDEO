@@ -1,35 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getUsers } from "./usersApi";
+import { getUser } from "./usersApi";
 
 const initialState = {
-  users: [],
+  user: {},
   isLoading: false,
   isError: false,
   error: "",
 };
 
-export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-  const users = await getUsers();
+export const fetchUser = createAsyncThunk("users/fetchUser", async (id) => {
+  const users = await getUser(id);
   return users;
 });
 
 const userSlice = createSlice({
-  name: "users",
+  name: "user",
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUsers.pending, (state) => {
+      .addCase(fetchUser.pending, (state) => {
         state.isError = false;
         state.isLoading = true;
       })
-      .addCase(fetchUsers.fulfilled, (state, action) => {
-        console.log(action);
+      .addCase(fetchUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.users = action.payload;
+        state.user = action.payload;
       })
-      .addCase(fetchUsers.rejected, (state, action) => {
+      .addCase(fetchUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.users = [];
+        state.users = {};
         state.isError = true;
         state.error = action?.error?.message;
       });

@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../features/users/userSlice";
+import { useNavigate } from "react-router-dom";
+import { fetchUsers } from "../features/users/usersSlice";
 
 const Users = () => {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -33,6 +35,7 @@ const Users = () => {
             <div className="flex justify-between items-center pb-3">
               <h4>{user?.phone}</h4>
               <button
+                onClick={() => navigate(`/users/${user?.id}`)}
                 className="text-[#692238] font-bold underline text-[14px]"
                 type="button"
               >

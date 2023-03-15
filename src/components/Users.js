@@ -26,7 +26,7 @@ const Users = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 py-12 mx-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 py-12 mx-6 md:mx-12">
       {content}
     </div>
   );

@@ -10,7 +10,7 @@ const User = ({ user }) => {
         <p className="text-[14px] leading-none">{user?.address?.city}</p>
       </div>
       <div className="space-y-4">
-        <div className="-mt-4">
+        <div className="md:-mt-4">
           <h2 className="text-[20px] font-bold">{user?.name}</h2>
           <p>{user?.email}</p>
         </div>
